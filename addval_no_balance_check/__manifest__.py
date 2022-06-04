@@ -21,5 +21,9 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account']
+    'depends': ['base', 'account'],
+
+    "data": [
+      "views/account_move_views.xml",
+    ]
 }
