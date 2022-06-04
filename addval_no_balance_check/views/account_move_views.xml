@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="view_move_line_form" inherit_id="stock_account.view_move_line_form">
-      <field name="credit" readonly="0"/>
-      <field name="debit" readonly="0"/>
-      <field name="quantity" readonly="0"/>
+        <xpath expr="//field[@name='credit']" position="replace">
+          <field name="credit" readonly="0"/>
+        </xpath>
+        <xpath expr="//field[@name='debit']" position="replace">
+          <field name="debit" readonly="0"/>
+        </xpath>
+        <xpath expr="//field[@name='quantity']" position="replace">
+          <field name="quantity" readonly="0"/>
+        </xpath>
     </template>
 </odoo>
