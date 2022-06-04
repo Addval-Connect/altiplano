@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template name="view_move_line_form_inherit" ref="view_move_line_form">
+    <template id="view_move_line_form" inherit_id="view_move_line_form">
       <xpath expr="//field[@name='credit']" position="attributes">
         <attribute name="readonly">0</attribute>
       </xpath>
