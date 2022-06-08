@@ -2,3 +2,8 @@
 	path = Addval-Connect/odoo-addval-modules
 	url = git@github.com:Addval-Connect/odoo-addval-modules.git
 	branch = main
+
+[submodule "Addval-Connect/odoo-fintoc"]
+	path = Addval-Connect/odoo-fintoc
+	url = git@github.com:Addval-Connect/odoo-fintoc.git
+	branch = main
