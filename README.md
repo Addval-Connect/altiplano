@@ -48,3 +48,39 @@
     ~~~
 
 ## Merge changes to production
+
+* checkout to the production branch main
+
+    ~~~Bash
+    git checkout main
+    ~~~
+
+* make sure the commit of the submodules in the main branch is the same as in the staging branch:
+
+* merge the changes from the staging branch to the main branch:
+
+    ~~~Bash
+    git merge Altiplano-Staging
+    ~~~
+
+* Push the changes to the production branch:
+
+    ~~~Bash
+    git push
+    ~~~
+
+## Reflect module changes in odoo.sh
+
+* go to <https://www.odoo.sh/project/{PROJECT_NAME}/branches/{BRANCH_NAME}/history>
+
+* Connect to the database:
+
+    ![Image Not Found](Addval-Connect\odoo-addval-modules\documentation\resources\ConnectOdooDatabase.png?raw=true "Optional Title")
+
+* Go to the applications module:
+
+    ![Image Not Found](Addval-Connect\odoo-addval-modules\documentation\resources\OdooApps.png?raw=true "Optional Title")
+
+* Search for your desired application and update it:
+
+    ![Image Not Found](Addval-Connect\odoo-addval-modules\documentation\resources\OdooUpdateModule.png?raw=true "Optional Title")
