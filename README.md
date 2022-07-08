@@ -49,6 +49,20 @@
 
 ## Merge changes to production
 
+### Drag and drop the staging branch to the production branch
+
+* go to <https://www.odoo.sh/project/{PROJECT_NAME}/branches/{BRANCH_NAME}/history>
+* drag and drop the staging branch to the production branch:
+
+    ![Image Not Found](Addval-Connect\odoo-addval-modules\documentation\resources\OdooDragMerge.png?raw=true "Optional Title")
+
+* select merge:
+    ![Image Not Found](Addval-Connect\odoo-addval-modules\documentation\resources\OdooDragMergeSelect.png?raw=true "Optional Title")
+
+### Manual Git commands
+
+If the previous steps did not work, you can use the following commands to merge the changes to the production branch:
+
 * checkout to the production branch main
 
     ~~~Bash
