@@ -16,7 +16,7 @@
     <template id="dte_subtemplate_stock" inherit_id="l10n_cl_edi_stock.dte_subtemplate">
         <xpath expr="//Receptor/Contacto" position="replace">
             <t t-set="RutReceptor" t-value="'55555555-5' if move.partner_id._l10n_cl_is_foreign() else format_vat(move.commercial_partner_id.vat)"/>
-            <Contacto t-esc="str(RutReceptor == '61703000-4')"/>
+            <Contacto t-esc="45"/>
             <!-- <t t-if="RutReceptor == '61703000-4'">
                 <Contacto t-esc="44"/>
             </t>
