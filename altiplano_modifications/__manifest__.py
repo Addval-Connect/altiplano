@@ -10,7 +10,9 @@
     "version": "0.2",
     "license": "Other proprietary",
     "depends": ["l10n_cl_edi"],
-    "data": ["template/dte_template.xml"],
+    "data": [
+        "template/dte_template.xml",
+    ],
     "installable": True,
     "application": True,
     "auto_install": False,
