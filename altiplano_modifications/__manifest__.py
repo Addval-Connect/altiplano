@@ -9,7 +9,7 @@
     "category": "Accounting",
     "version": "0.2",
     "license": "Other proprietary",
-    "depends": ["l10n_cl_edi"],
+    "depends": ["l10n_cl_edi", "l10n_cl_edi_stock"],
     "data": [
         "template/dte_template.xml",
     ],
