@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="dte_subtemplate" inherit_id="l10n_cl_edi.dte_subtemplate">
+        <Contacto position="replace">
+            <t t-set="RutReceptor" t-value="'55555555-5' if move.partner_id._l10n_cl_is_foreign() else format_vat(move.commercial_partner_id.vat)"/>
+            <t t-if="RutReceptor == '61703000-4'">
+                <Contacto t-esc="44"/>
+            </t>
+            <t t-else="">
+                <Contacto t-esc="format_length(move.partner_id.phone or move.commercial_partner_id.phone or move.partner_id.email or '', 80)"/>
+            </t>
+        </Contacto>
+    </template>
+    <!-- <template id="dte_subtemplate_stock" inherit_id="l10n_cl_edi_stock.dte_subtemplate">
+        <Contacto position="replace">
+            <t t-set="RutReceptor" t-value="'55555555-5' if move.partner_id._l10n_cl_is_foreign() else format_vat(move.commercial_partner_id.vat)"/>
+            <t t-if="RutReceptor == '61703000-4'">
+                <Contacto t-esc="44"/>
+            </t>
+            <t t-else="">
+                <Contacto t-esc="format_length(move.partner_id.phone or move.commercial_partner_id.phone or move.partner_id.email or '', 80)"/>
+            </t>
+        </Contacto>
+    </template> -->
+</odoo>
