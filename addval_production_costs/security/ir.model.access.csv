@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_au_conc_grade,access_au_conc_grade,model_au_conc_grade,1,1,1,1
+access_au_conc_grade,access_au_conc_grade,model_au_conc_grade,,1,1,1,1
 access_cu_price,access_cu_price,model_cu_price,,1,1,1,1
 access_fe_conc_grade,access_fe_conc_grade,model_fe_conc_grade,,1,1,1,1
 access_fe_conc_price,access_fe_conc_price,model_fe_conc_price,,1,1,1,1
