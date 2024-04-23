@@ -23,6 +23,11 @@
                     class="oe_highlight"
                     attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_relave_id', '=', None)]}"/>
             </header>
+            <field name="company_id" position="after">
+                <field name="mrp_cu_id"/>
+                <field name="product_zone_id"/>
+                <field name="product_family_id"/>
+            </field>
             <xpath expr="//notebook[1]" position="inside">
                 <page name="production_calculator" string="Calculadora Producción">
                     <!--mineral semi procesado 899 -->
