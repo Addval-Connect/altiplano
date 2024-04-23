@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <record id="mrp_production_costs" model="ir.ui.view">
+        <field name="name">mrp.production.costs</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button string="Generar Cobre"
+                    type="object"
+                    name="create_cu_conc"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_cu_id', '=', None)]}"/>
+                <button string="Generar Fierro"
+                    type="object"
+                    name="create_fe_conc"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_fe_id', '=', None)]}"/>
+                <button string="Relave"
+                    type="object"
+                    name="create_relave"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_relave_id', '=', None)]}"/>
+            </header>
+            <xpath expr="//notebook[1]" position="inside">
+                <page name="production_calculator" string="Calculadora Producción">
+                    <!--mineral semi procesado 899 -->
+                    <!--Concentrado de Cobre 906 -->
+                    <!--Concentrado de Fierro 907 -->
+                    <!--Relave de Flotación 908 -->
+                    <field name="fe_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <field name="plant_recovery_id" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                    <field name="fe_conc_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <field name="au_conc_grade_id" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                    <field name="cu_price_id" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                    <field name="gold_price_id" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                    <field name="fe_conc_price_id" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <field name="tonnes_processed" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                    <field name="cu_grade" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                    <field name="cu_conc_grade" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                    <field name="average_mining_humidity" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                    <field name="drum_efficiency_1" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <field name="drum_efficiency_2" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <field name="drum_efficiency_3" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                    <button string="Calcular Cu"
+                        type="object"
+                        name="calculate_cu_conc"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'draft'), ('product_id', '!=', 906)]}"/>
+                    <button string="Calcular Fe"
+                        type="object"
+                        name="calculate_fe_conc"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'draft'), ('product_id', '!=', 907)]}"/>
+                    <button string="Calcular relave"
+                        type="object"
+                        name="calculate_relave"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('product_id', '!=', '899'), ('state', '!=', 'draft'), ('product_id', '!=', 908)]}"/>
+                </page>
+            </xpath>
+        </field>
+      </record>
+    </data>
+</odoo>

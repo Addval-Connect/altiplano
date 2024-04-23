@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_au_conc_grade,access_au_conc_grade,model_au_conc_grade,1,1,1,1
+access_cu_price,access_cu_price,model_cu_price,,1,1,1,1
+access_fe_conc_grade,access_fe_conc_grade,model_fe_conc_grade,,1,1,1,1
+access_fe_conc_price,access_fe_conc_price,model_fe_conc_price,,1,1,1,1
+access_fe_grade,access_fe_grade,model_fe_grade,,1,1,1,1
+access_gold_price,access_gold_price,model_gold_price,,1,1,1,1
+access_plant_recovery,access_plant_recovery,model_plant_recovery,,1,1,1,1
