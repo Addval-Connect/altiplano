@@ -25,8 +25,8 @@
             </header>
             <field name="company_id" position="after">
                 <field name="mrp_cu_id"/>
-                <field name="product_zone_id"/>
-                <field name="product_family_id"/>
+                <field name="mrp_fe_id"/>
+                <field name="mrp_relave_id"/>
             </field>
             <xpath expr="//notebook[1]" position="inside">
                 <page name="production_calculator" string="Calculadora Producción">
