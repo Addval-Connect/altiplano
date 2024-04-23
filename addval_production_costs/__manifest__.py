@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Acciones de servidor",
+    'name': "Calculadora de produccion",
 
     'summary': """
-        Módulo que agrega acciones de servidor""",
+        Módulo que agrega campos especificos para poder calcular las concentraciones de minerales fabricadas""",
 
     'description': """
-        Este módulo agrega las siguientes acciones de servidor:
-        - Forzar Borrado para eliminar las facturas 
-        - Confirmación masiva para validar facturas
+        Módulo que agrega campos especificos para poder calcular las concentraciones de minerales fabricadas
     """,
 
     "author": "Addval Connect",
