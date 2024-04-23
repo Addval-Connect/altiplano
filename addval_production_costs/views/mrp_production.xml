@@ -29,7 +29,7 @@
                 <field name="mrp_relave_id"/>
             </field>
             <xpath expr="//notebook[1]" position="inside">
-                <page name="production_calculator" string="Calculadora Producción">
+                <page name="production_calculator" string="Calculadora Producción" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}">
                     <!--mineral semi procesado 899 -->
                     <!--Concentrado de Cobre 906 -->
                     <!--Concentrado de Fierro 907 -->
