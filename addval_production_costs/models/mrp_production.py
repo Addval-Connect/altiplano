@@ -13,7 +13,7 @@ class MrpProduction(models.Model):
 
     #Campos relacionados a mantenedores
     fe_grade_id = fields.Many2one('fe.grade', string='Ley Fierro')
-    plant_recovery_id = fields.Many2one('plant.recovery', string='Recuperación Metalúrgica de la  Planta')
+    plant_recovery_id = fields.Many2one('plant.recovery', string='Recuperación Metalúrgica de la Planta')
     fe_conc_grade_id = fields.Many2one('fe.conc.grade', string='Ley de concentrado de Fierro')
     au_conc_grade_id =fields.Many2one('au.conc.grade', string='Au Conc. Calificación')
     cu_price_id = fields.Many2one('cu.price', string='Precio Cu')
