@@ -11,17 +11,17 @@
                     type="object"
                     name="create_cu_conc"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', '|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_cu_id', '!=', None)]}"/>
+                    attrs="{'invisible': ['|', '|', '|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_cu_id', '!=', None)]}"/>
                 <button string="Generar Fierro"
                     type="object"
                     name="create_fe_conc"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', '|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_fe_id', '!=', None)]}"/>
+                    attrs="{'invisible': ['|', '|', '|',('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_fe_id', '!=', None)]}"/>
                 <button string="Relave"
                     type="object"
                     name="create_relave"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', '|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_relave_id', '!=', None)]}"/>
+                    attrs="{'invisible': ['|', '|', '|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_relave_id', '!=', None)]}"/>
             </header>
             <field name="company_id" position="after">
                 <field name="mrp_cu_id"/>
@@ -52,17 +52,17 @@
                                 type="object"
                                 name="calculate_cu_conc"
                                 class="oe_highlight"
-                                attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('product_id', '!=', 906)]}"/>
+                                attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('product_id', '!=', 906)]}"/>
                             <button string="Calcular Fe"
                                 type="object"
                                 name="calculate_fe_conc"
                                 class="oe_highlight"
-                                attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('product_id', '!=', 907)]}"/>
+                                attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('product_id', '!=', 907)]}"/>
                             <button string="Calcular relave"
                                 type="object"
                                 name="calculate_relave"
                                 class="oe_highlight"
-                                attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('product_id', '!=', 908)]}"/>
+                                attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('product_id', '!=', 908)]}"/>
                         </group>
                     </group>
                     <!--mineral semi procesado 899 -->
