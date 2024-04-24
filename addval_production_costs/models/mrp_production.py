@@ -10,6 +10,7 @@ class MrpProduction(models.Model):
     mrp_cu_id = fields.Many2one('mrp.production', string='Concentrado de cobre', readonly=True)
     mrp_fe_id = fields.Many2one('mrp.production', string="Concentrado de fierro", readonly=True)
     mrp_relave_id = fields.Many2one('mrp.production', string="Relave", readonly=True)
+    mrp_origin_id = fields.Many2one('mrp.production', string="Orden de origen", readonly=True)
 
     #Campos relacionados a mantenedores
     fe_grade_id = fields.Many2one('fe.grade', string='Ley Fierro')
@@ -55,10 +56,10 @@ class MrpProduction(models.Model):
         self.product_qty = tonnes_cu
     
     def calculate_fe_conc(self):
-        if not self.mrp_cu_id:
+        if not self.mrp_origin_id.mrp_cu_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre")
         else:
-            mineral_tonnes = self.tonnes_processed - round(self.mrp_cu_id.product_qty)
+            mineral_tonnes = self.tonnes_processed - round(self.mrp_origin_id.mrp_cu_id.product_qty)
             fe_conc_grade = self.fe_conc_grade_id.fe_conc_percentage/100
             fe_grade = self.fe_grade_id.fe_percentage/100
             tonnes_fe = (mineral_tonnes * fe_grade * self.drum_efficiency_1 * self.drum_efficiency_2 * self.drum_efficiency_3)/fe_conc_grade				
@@ -66,11 +67,11 @@ class MrpProduction(models.Model):
             self.product_qty = tonnes_fe
 
     def calculate_relave(self):
-        if not self.mrp_cu_id or not self.mrp_fe_id:
+        if not self.mrp_origin_id.mrp_cu_id or not self.mrp_origin_id.mrp_fe_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre y Fierro")
         else:
-            cu_tonnes = round(self.mrp_cu_id.product_qty)
-            fe_tonnes = round(self.mrp_fe_id.product_qty)
+            cu_tonnes = round(self.mrp_origin_id.mrp_cu_id.product_qty)
+            fe_tonnes = round(self.mrp_origin_id.mrp_fe_id.product_qty)
             relave_tonnes = (self.tonnes_processed - cu_tonnes) - fe_tonnes				
 
             self.product_qty =  relave_tonnes
@@ -81,6 +82,7 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
+            'mrp_origin_id': self.id
         })
 
         self.mrp_cu_id = new_manufacturing.id
@@ -101,6 +103,7 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
+            'mrp_origin_id': self.id
         })
 
         self.mrp_fe_id = new_manufacturing.id
@@ -121,6 +124,7 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
+            'mrp_origin_id': self.id
         })
 
         self.mrp_relave_id = new_manufacturing.id
