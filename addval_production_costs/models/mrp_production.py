@@ -80,7 +80,6 @@ class MrpProduction(models.Model):
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
-            'product_uom': 1, 
             'product_qty': 1.0, 
         })
 
@@ -101,7 +100,6 @@ class MrpProduction(models.Model):
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
-            'product_uom': 1, 
             'product_qty': 1.0, 
         })
 
@@ -122,7 +120,6 @@ class MrpProduction(models.Model):
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
-            'product_uom': 1, 
             'product_qty': 1.0, 
         })
 
