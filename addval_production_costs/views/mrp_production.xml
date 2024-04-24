@@ -11,17 +11,17 @@
                     type="object"
                     name="create_cu_conc"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_cu_id', '!=', False)]}"/>
+                    attrs="{'invisible': ['|', '|', ('product_id', '!=', 899), ('state', '!=', 'done'), ('mrp_cu_id', '!=', False)]}"/>
                 <button string="Generar Fierro"
                     type="object"
                     name="create_fe_conc"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_fe_id', '!=', False)]}"/>
+                    attrs="{'invisible': ['|', '|', ('product_id', '!=', 899), ('state', '!=', 'done'), ('mrp_fe_id', '!=', False)]}"/>
                 <button string="Relave"
                     type="object"
                     name="create_relave"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', ('product_id', '!=', '899'), ('state', '!=', 'done'), ('mrp_relave_id', '!=', False)]}"/>
+                    attrs="{'invisible': ['|', '|', ('product_id', '!=', 899), ('state', '!=', 'done'), ('mrp_relave_id', '!=', False)]}"/>
             </header>
             <field name="company_id" position="after">
                 <field name="mrp_cu_id"/>
