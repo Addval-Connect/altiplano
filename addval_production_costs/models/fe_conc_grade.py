@@ -10,4 +10,5 @@ class FeConcGrade(models.Model):
     company_id = fields.Many2one('res.company', string='Compañía', default=lambda self: self.env.company)
 
     def _compute_name(self):
-        self.name = str(self.fe_conc_percentage) + '%'
+        for s in self:
+            s.name = str(s.fe_conc_percentage) + '%'

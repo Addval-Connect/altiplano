@@ -10,4 +10,5 @@ class PlantRecovery(models.Model):
     company_id = fields.Many2one('res.company', string='Compañía', default=lambda self: self.env.company)
 
     def _compute_name(self):
-        self.name = str(self.plant_recovery) + '%'
+        for s in self:
+            s.name = str(s.plant_recovery) + '%'
