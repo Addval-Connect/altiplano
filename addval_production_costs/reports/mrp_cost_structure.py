@@ -11,8 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class MrpCostStructure(models.AbstractModel):
-    _name = 'report.mrp_account_enterprise.mrp_cost_structure'
-    _description = 'MRP Cost Structure Report'
+    _inherit = 'report.mrp_account_enterprise.mrp_cost_structure'
 
     def get_lines(self, productions):
         ProductProduct = self.env['product.product']
