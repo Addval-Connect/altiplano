@@ -15,7 +15,7 @@
     "license": "Other proprietary",
     'version': '0.1',
 
-    'depends': ['base','account','sale_management'],
+    'depends': ['base','account','sale_management', 'mrp_account_enterprise'],
 
     'data': [
         'security/ir.model.access.csv',
