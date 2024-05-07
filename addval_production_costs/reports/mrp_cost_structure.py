@@ -101,6 +101,7 @@ class MrpCostStructure(models.AbstractModel):
                     mo_qty += m.product_uom_id._compute_quantity(qty, uom)
             _logger.warning('mos: %s', mos)
             res.append({
+                'mos': mos,
                 'product': product,
                 'mo_qty': mo_qty,
                 'mo_uom': uom,
