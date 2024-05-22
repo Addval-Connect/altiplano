@@ -33,69 +33,95 @@
                 <page name="production_calculator" string="Calculadora Producción" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}">
                     <group>
                         <group>
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 907)]}">
+                            <label for="weight" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <div class="o_row" name="fe_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="fe_grade_id" string="Ley Fierro" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                             </div>
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 906)]}">
+                            <label for="plant_recovery_id" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                            <div class="o_row" name="plant_recovery_id" attrs="{'invisible': [('product_id', '!=', 906)]}">
                                 <field name="plant_recovery_id" string="Recuperación Metalúrgica de la Planta" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                             </div>      
                             
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 907)]}">
+                            <label for="fe_conc_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <div class="o_row" name="fe_conc_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="fe_conc_grade_id" string="Ley de concentrado de Fierro" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': True}">
+                            <label for="au_conc_grade_id" attrs="{'invisible': True}"/>
+                            <div class="o_row" name="au_conc_grade_id" attrs="{'invisible': True}">
                                 <field name="au_conc_grade_id" string="Au Conc. Calificación" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> g/dmt</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': True}">
+                            <label for="au_conc_grade_id" attrs="{'invisible': True}"/>
+                            <div class="o_row" name="au_conc_grade_id" attrs="{'invisible': True}">
                                 <field name="cu_price_id" string="Precio Cu" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> USD/lb</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': True}">
+                            <label for="gold_price_id" attrs=""/>
+                            <div class="o_row" name="gold_price_id" attrs="{'invisible': True}">
                                 <field name="gold_price_id" string="Precio de oro" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> USD/oz</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': True}">
+                            <label for="fe_conc_price_id" attrs="{'invisible': True}"/>
+                            <div class="o_row" name="fe_conc_price_id" attrs="{'invisible': True}">
                                 <field name="fe_conc_price_id" string="Precio del concentrado de Fe" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> USD/ton</span>
-                            </div>       
+                            </div>  
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}">
-                                <field name="tonnes_processed" string="Toneladas de Minerales Procesado" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
+                            <label for="tonnes_processed" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}"/>
+                            <div class="o_row" name="tonnes_processed" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}">
+                                <field name="tonnes_processed" string="Toneladas de Minerales Procesado" attrs="{'readonly': True}" style="width: 70px;"/>
+                                <span> tonnes</span>
+                            </div>   
+
+                            <label for="cu_tonnes_processed" attrs="{'invisible': [('product_id', 'not in', (907, 908))]}"/>
+                            <div class="o_row" name="cu_tonnes_processed" attrs="{'invisible': [('product_id', 'not in', (907, 908))]}">
+                                <field name="cu_tonnes_processed" string="Toneladas de Cobre Procesado" attrs="{'readonly': True}" style="width: 70px;"/>
+                                <span> tonnes</span>
+                            </div>         
+
+                            <label for="fe_tonnes_processed" attrs="{'invisible': [('product_id', '!=', 908)]}"/>
+                            <div class="o_row" name="fe_tonnes_processed" attrs="{'invisible': [('product_id', '!=', 908)]}">
+                                <field name="fe_tonnes_processed" string="Toneladas de Fierro Procesado" attrs="{'readonly': True}" style="width: 70px;"/>
                                 <span> tonnes</span>
                             </div>       
-
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 906)]}">
+                            
+                            <label for="cu_grade" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                            <div class="o_row" name="cu_grade" attrs="{'invisible': [('product_id', '!=', 906)]}">
                                 <field name="cu_grade" string="Ley Cobre" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 906)]}">
+                            <label for="cu_conc_grade" attrs="{'invisible': [('product_id', '!=', 906)]}"/>
+                            <div class="o_row" name="cu_conc_grade" attrs="{'invisible': [('product_id', '!=', 906)]}">
                                 <field name="cu_conc_grade" string="Ley de concentrado de cobre" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', 'not in', (906, 907))]}">
+                            <label for="average_mining_humidity" attrs="{'invisible': [('product_id', 'not in', (906, 907))]}"/>
+                            <div class="o_row" name="average_mining_humidity" attrs="{'invisible': [('product_id', 'not in', (906, 907))]}">
                                 <field name="average_mining_humidity" string="% Mineral seco" attrs="{'readonly': [('state', '!=', 'draft')]}"  style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 907)]}">
+                            <label for="drum_efficiency_1" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <div class="o_row" name="drum_efficiency_1" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="drum_efficiency_1" string="Eficiencia tambor 1" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 907)]}">
+                            <label for="drum_efficiency_2" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <div class="o_row" name="drum_efficiency_2" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="drum_efficiency_2" string="Eficiencia tambor 2" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
 
-                            <div class="o_row" attrs="{'invisible': [('product_id', '!=', 907)]}">
+                            <label for="drum_efficiency_3" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <div class="o_row" name="drum_efficiency_3" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="drum_efficiency_3" string="Eficiencia tambor 3" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                                 <span> %</span>
                             </div>       
