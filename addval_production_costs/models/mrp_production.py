@@ -22,36 +22,22 @@ class MrpProduction(models.Model):
     fe_conc_price_id = fields.Many2one('fe.conc.price', string='Precio del concentrado de Fe')
 
     #Campos con valores fijos
-    tonnes_processed  = fields.Integer(string="Toneladas de Minerales Procesado", default=185)
+    cu_tonnes_processed = fields.Float(string="Toneladas de Cobre Procesado", readonly=True)
+    fe_tonnes_processed = fields.Float(string="Toneladas de Fierro Procesado", readonly=True)
+    tonnes_processed  = fields.Float(string="Toneladas de Minerales Procesado", readonly=True)
     cu_grade = fields.Float(string="Ley Cobre", default=0.016, digits='Product Unit of Measure')
     cu_conc_grade = fields.Float(string="Ley de concentrado de cobre", default=0.265, digits='Product Unit of Measure')
-    average_mining_humidity = fields.Float(string="Descuento humedad promedio mineral", default=0.965, digits='Product Unit of Measure')
+    average_mining_humidity = fields.Float(string="% Mineral seco", default=0.965, digits='Product Unit of Measure')
     drum_efficiency_1 = fields.Float(string="Eficiencia tambor 1", digits='Product Unit of Measure')
     drum_efficiency_2 = fields.Float(string="Eficiencia tambor 2", digits='Product Unit of Measure')
     drum_efficiency_3 = fields.Float(string="Eficiencia tambor 3", digits='Product Unit of Measure')
 
-    # @api.depends('bom_id', 'product_id')
-    # def _compute_product_qty(self):
-    #     for production in self:
-    #         if production.state != 'draft':
-    #             continue
-    #         if production.product_id == 906:
-    #             production.product_qty = production._calculate_cu_conc(production)
-
-    #         elif production.product_id == 906:
-    #             production.product_qty
-
-    #         elif production.product_id == 906:
-    #             production.product_qty
-
-    #         else:
-    #             if production.bom_id and production._origin.bom_id != production.bom_id:
-    #                 production.product_qty = production.bom_id.product_qty
-
-    #@api.onchange('cu_grade', 'tonnes_processed', 'plant_recovery_id', 'average_mining_humidity', 'cu_conc_grade')
     def calculate_cu_conc(self):
         plant_recovery = self.plant_recovery_id.plant_recovery/100
-        tonnes_cu = (self.cu_grade * self.tonnes_processed * plant_recovery* self.average_mining_humidity)/self.cu_conc_grade				
+        average_mining_humidity = self.average_mining_humidity/100
+        cu_conc_grade =  self.cu_conc_grade/100
+        cu_grade =  self.cu_grade/100
+        tonnes_cu = (cu_grade * self.tonnes_processed * plant_recovery* average_mining_humidity)/cu_conc_grade				
 
         self.product_qty = tonnes_cu
     
@@ -59,10 +45,15 @@ class MrpProduction(models.Model):
         if not self.mrp_origin_id.mrp_cu_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre")
         else:
+            self.cu_tonnes_processed = round(self.mrp_origin_id.mrp_cu_id.product_qty)
+
             mineral_tonnes = self.tonnes_processed - round(self.mrp_origin_id.mrp_cu_id.product_qty)
             fe_conc_grade = self.fe_conc_grade_id.fe_conc_percentage/100
             fe_grade = self.fe_grade_id.fe_percentage/100
-            tonnes_fe = (mineral_tonnes * fe_grade * self.drum_efficiency_1 * self.drum_efficiency_2 * self.drum_efficiency_3)/fe_conc_grade				
+            drum_efficiency_1 = self.drum_efficiency_1/100
+            drum_efficiency_2 = self.drum_efficiency_2/100
+            drum_efficiency_3 = self.drum_efficiency_3/100
+            tonnes_fe = (mineral_tonnes * fe_grade * drum_efficiency_1 * drum_efficiency_2 * drum_efficiency_3)/fe_conc_grade				
 
             self.product_qty = tonnes_fe
 
@@ -70,6 +61,8 @@ class MrpProduction(models.Model):
         if not self.mrp_origin_id.mrp_cu_id or not self.mrp_origin_id.mrp_fe_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre y Fierro")
         else:
+            self.cu_tonnes_processed = round(self.mrp_origin_id.mrp_cu_id.product_qty)
+            self.fe_tonnes_processed = round(self.mrp_origin_id.mrp_fe_id.product_qty)
             cu_tonnes = round(self.mrp_origin_id.mrp_cu_id.product_qty)
             fe_tonnes = round(self.mrp_origin_id.mrp_fe_id.product_qty)
             relave_tonnes = (self.tonnes_processed - cu_tonnes) - fe_tonnes				
@@ -82,7 +75,8 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
-            'mrp_origin_id': self.id
+            'mrp_origin_id': self.id,
+            'tonnes_processed': self.product_qty
         })
 
         self.mrp_cu_id = new_manufacturing.id
@@ -103,7 +97,9 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
-            'mrp_origin_id': self.id
+            'mrp_origin_id': self.id,
+            'tonnes_processed': self.product_qty,
+            'cu_tonnes_processed': self.mrp_cu_id.product_qty
         })
 
         self.mrp_fe_id = new_manufacturing.id
@@ -124,7 +120,10 @@ class MrpProduction(models.Model):
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
             'product_qty': 1.0, 
-            'mrp_origin_id': self.id
+            'mrp_origin_id': self.id,
+            'tonnes_processed': self.product_qty,
+            'cu_tonnes_processed': self.mrp_cu_id.product_qty,
+            'fe_tonnes_processed': self.mrp_fe_id.product_qty
         })
 
         self.mrp_relave_id = new_manufacturing.id
