@@ -33,7 +33,7 @@
                 <page name="production_calculator" string="Calculadora Producción" attrs="{'invisible': [('product_id', 'not in', (906, 907, 908))]}">
                     <group>
                         <group>
-                            <label for="weight" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
+                            <label for="fe_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}"/>
                             <div class="o_row" name="fe_grade_id" attrs="{'invisible': [('product_id', '!=', 907)]}">
                                 <field name="fe_grade_id" string="Ley Fierro" attrs="{'readonly': [('state', '!=', 'draft')]}" style="width: 70px;"/>
                             </div>
