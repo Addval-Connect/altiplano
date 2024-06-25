@@ -13,13 +13,13 @@ class MrpProduction(models.Model):
     mrp_origin_id = fields.Many2one('mrp.production', string="Orden de origen", readonly=True)
 
     #Campos relacionados a mantenedores
-    fe_grade_id = fields.Many2one('fe.grade', string='Ley Fierro')
-    plant_recovery_id = fields.Many2one('plant.recovery', string='Recuperación Metalúrgica de la Planta')
-    fe_conc_grade_id = fields.Many2one('fe.conc.grade', string='Ley de concentrado de Fierro')
-    au_conc_grade_id =fields.Many2one('au.conc.grade', string='Au Conc. Calificación')
-    cu_price_id = fields.Many2one('cu.price', string='Precio Cu')
-    gold_price_id = fields.Many2one('gold.price', string='Precio de oro')
-    fe_conc_price_id = fields.Many2one('fe.conc.price', string='Precio del concentrado de Fe')
+    fe_grade_id = fields.Many2one('fe.grade', string='Ley Fierro', index=True)
+    plant_recovery_id = fields.Many2one('plant.recovery', string='Recuperación Metalúrgica de la Planta', index=True)
+    fe_conc_grade_id = fields.Many2one('fe.conc.grade', string='Ley de concentrado de Fierro', index=True)
+    au_conc_grade_id =fields.Many2one('au.conc.grade', string='Au Conc. Calificación', index=True)
+    cu_price_id = fields.Many2one('cu.price', string='Precio Cu', index=True)
+    gold_price_id = fields.Many2one('gold.price', string='Precio de oro', index=True)
+    fe_conc_price_id = fields.Many2one('fe.conc.price', string='Precio del concentrado de Fe', index=True)
 
     #Campos con valores fijos
     cu_tonnes_processed = fields.Float(string="Toneladas de Cobre Procesado", readonly=True)
@@ -45,9 +45,9 @@ class MrpProduction(models.Model):
         if not self.mrp_origin_id.mrp_cu_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre")
         else:
-            self.cu_tonnes_processed = round(self.mrp_origin_id.mrp_cu_id.product_qty)
+            self.cu_tonnes_processed = self.mrp_origin_id.mrp_cu_id.product_qty
 
-            mineral_tonnes = self.tonnes_processed - round(self.mrp_origin_id.mrp_cu_id.product_qty)
+            mineral_tonnes = self.tonnes_processed - self.mrp_origin_id.mrp_cu_id.product_qty
             fe_conc_grade = self.fe_conc_grade_id.fe_conc_percentage/100
             fe_grade = self.fe_grade_id.fe_percentage/100
             drum_efficiency_1 = self.drum_efficiency_1/100
@@ -61,11 +61,12 @@ class MrpProduction(models.Model):
         if not self.mrp_origin_id.mrp_cu_id or not self.mrp_origin_id.mrp_fe_id:
             raise ValidationError("Se necesita tener primero el concentrado de Cobre y Fierro")
         else:
-            self.cu_tonnes_processed = round(self.mrp_origin_id.mrp_cu_id.product_qty)
-            self.fe_tonnes_processed = round(self.mrp_origin_id.mrp_fe_id.product_qty)
-            cu_tonnes = round(self.mrp_origin_id.mrp_cu_id.product_qty)
-            fe_tonnes = round(self.mrp_origin_id.mrp_fe_id.product_qty)
-            relave_tonnes = (self.tonnes_processed - cu_tonnes) - fe_tonnes				
+            average_mining_humidity = self.average_mining_humidity/100
+            self.cu_tonnes_processed = self.mrp_origin_id.mrp_cu_id.product_qty
+            self.fe_tonnes_processed = self.mrp_origin_id.mrp_fe_id.product_qty
+            cu_tonnes = self.mrp_origin_id.mrp_cu_id.product_qty
+            fe_tonnes = self.mrp_origin_id.mrp_fe_id.product_qty
+            relave_tonnes = ((self.tonnes_processed*average_mining_humidity) - cu_tonnes) - fe_tonnes				
 
             self.product_qty =  relave_tonnes
 
@@ -123,7 +124,8 @@ class MrpProduction(models.Model):
             'mrp_origin_id': self.id,
             'tonnes_processed': self.product_qty,
             'cu_tonnes_processed': self.mrp_cu_id.product_qty,
-            'fe_tonnes_processed': self.mrp_fe_id.product_qty
+            'fe_tonnes_processed': self.mrp_fe_id.product_qty,
+            'average_mining_humidity': self.mrp_fe_id.average_mining_humidity.id
         })
 
         self.mrp_relave_id = new_manufacturing.id
