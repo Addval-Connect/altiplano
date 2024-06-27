@@ -125,7 +125,7 @@ class MrpProduction(models.Model):
             'tonnes_processed': self.product_qty,
             'cu_tonnes_processed': self.mrp_cu_id.product_qty,
             'fe_tonnes_processed': self.mrp_fe_id.product_qty,
-            'average_mining_humidity': self.mrp_fe_id.average_mining_humidity.id
+            'average_mining_humidity': self.mrp_fe_id.average_mining_humidity
         })
 
         self.mrp_relave_id = new_manufacturing.id
