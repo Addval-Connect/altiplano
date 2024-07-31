@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="plant_recovery_tree" model="ir.ui.view">
+            <field name="name">plant.recovery.tree</field>
+            <field name="model">plant.recovery</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="plant_recovery_form" model="ir.ui.view">
+            <field name="name">plant.recovery.form</field>
+            <field name="model">plant.recovery</field>
+            <field name="arch" type="xml">
+                <form string="Recuperación Metalúrgica de la  Planta">
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="True"/>
+                            <field name="plant_recovery"/>
+                            <field name="company_id" readonly="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="plant_recovery_act_window" model="ir.actions.act_window">
+            <field name="name">Recuperación Metalúrgica de la  Planta</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">plant.recovery</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No hay registros creados
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Recuperación Metalúrgica de la  Planta" id="plant_recovery_sale_menu" action="plant_recovery_act_window"
+            parent="mrp.menu_mrp_configuration" sequence="100"/>
+    </data>
+</odoo>
