@@ -54,13 +54,13 @@
                                         res-model="product.product"/>
                                 </td>
                                 <td class="text-end">
-                                    <t t-if="line['product'].id == 906">
+                                    <t t-if="line['product'].id == 902">
                                         <span t-esc="line['mos'].tonnes_processed" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 907">
+                                    <t t-elif="line['product'].id == 903">
                                         <span t-esc="0.0" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 908">
+                                    <t t-elif="line['product'].id == 904">
                                         <span t-esc="0.0" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
                                     </t>
                                     <t t-else="">
@@ -69,13 +69,13 @@
                                     <span t-esc="m['product_id'].uom_id.name"/>
                                 </td>
                                 <td class="text-end">                    
-                                    <t t-if="line['product'].id == 906">
+                                    <t t-if="line['product'].id == 902">
                                         <span t-esc="m['cost'] / m['qty'] if m['qty'] else m['cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 907">
+                                    <t t-elif="line['product'].id == 903">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 908">
+                                    <t t-elif="line['product'].id == 904">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
                                     <t t-else="">
@@ -83,13 +83,13 @@
                                     </t>
                                 </td>
                                 <td class="text-end">
-                                    <t t-if="line['product'].id == 906">
+                                    <t t-if="line['product'].id == 902">
                                         <span t-esc=" (m['cost'] / m['qty']) * line['mos'].tonnes_processed" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 907">
+                                    <t t-elif="line['product'].id == 903">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 908">
+                                    <t t-elif="line['product'].id == 904">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
                                     <t t-else="">
@@ -102,13 +102,13 @@
                                     <strong>Total Cost of Components</strong>
                                 </td>
                                 <td class="text-end">
-                                    <t t-if="line['product'].id == 906">
+                                    <t t-if="line['product'].id == 902">
                                         <strong t-esc="(line['total_cost_components'] / line['mo_qty']) * line['mos'].tonnes_processed" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 907">
+                                    <t t-elif="line['product'].id == 903">
                                         <strong t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 908">
+                                    <t t-elif="line['product'].id == 904">
                                         <strong t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
                                     <t t-else="">
@@ -121,13 +121,13 @@
                                     <strong>Cost of Components per unit (in <t t-esc="line['product'].uom_id.name"/>)</strong>
                                 </td>
                                 <td class="text-end">
-                                    <t t-if="line['product'].id == 906">
+                                    <t t-if="line['product'].id == 902">
                                         <span t-esc="line['total_cost_components'] / line['mo_qty']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 907">
+                                    <t t-elif="line['product'].id == 903">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
-                                    <t t-elif="line['product'].id == 908">
+                                    <t t-elif="line['product'].id == 904">
                                         <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </t>
                                     <t t-else="">
@@ -241,13 +241,13 @@
                                         <strong>Total Production Cost</strong>
                                     </td>
                                     <td class="text-end">
-                                        <t t-if="line['product'].id == 906">
+                                        <t t-if="line['product'].id == 902">
                                             <strong t-esc="(line['total_cost'] / line['mo_qty']) * line['mos'].tonnes_processed" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
-                                        <t t-elif="line['product'].id == 907">
+                                        <t t-elif="line['product'].id == 903">
                                             <strong t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
-                                        <t t-elif="line['product'].id == 908">
+                                        <t t-elif="line['product'].id == 904">
                                             <strong t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
                                         <t t-else="">
@@ -260,13 +260,13 @@
                                         <strong>Total Cost per unit (in <t t-esc="line['product'].uom_id.name"/>)</strong>
                                     </td>
                                     <td class="text-end">
-                                        <t t-if="line['product'].id == 906">
+                                        <t t-if="line['product'].id == 902">
                                             <span t-esc="line['total_cost'] / line['mo_qty']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
-                                        <t t-elif="line['product'].id == 907">
+                                        <t t-elif="line['product'].id == 903">
                                             <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
-                                        <t t-elif="line['product'].id == 908">
+                                        <t t-elif="line['product'].id == 904">
                                             <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                         </t>
                                         <t t-else="">

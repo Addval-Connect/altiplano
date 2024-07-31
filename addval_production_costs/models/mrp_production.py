@@ -71,7 +71,7 @@ class MrpProduction(models.Model):
             self.product_qty =  relave_tonnes
 
     def create_cu_conc(self):
-        specific_product_id = 906 
+        specific_product_id = 902 
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
@@ -93,7 +93,7 @@ class MrpProduction(models.Model):
         }
     
     def create_fe_conc(self):
-        specific_product_id = 907 
+        specific_product_id = 903 
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
@@ -116,7 +116,7 @@ class MrpProduction(models.Model):
         }
     
     def create_relave(self):
-        specific_product_id = 908
+        specific_product_id = 904
         # Create a new mrp.production record
         new_manufacturing = self.env['mrp.production'].create({
             'product_id': specific_product_id,
