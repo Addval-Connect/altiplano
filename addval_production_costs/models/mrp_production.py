@@ -130,7 +130,7 @@ class MrpProduction(models.Model):
 
         self.mrp_relave_id = new_manufacturing.id
 
-        # Return to the created record form view
+        # Return to the created record form view (test for git)
         return {
             'type': 'ir.actions.act_window',
             'name': 'Manufacturing Order',
